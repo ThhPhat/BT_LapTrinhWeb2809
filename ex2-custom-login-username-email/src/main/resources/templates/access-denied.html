@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+<head>
+    <title>Từ chối truy cập (403 Access Denied)</title>
+</head>
+<body>
+<main layout:fragment="content">
+
+    <div class="card" style="text-align: center; padding: 48px 24px;">
+        <div style="font-size: 56px; margin-bottom: 12px;">🚫</div>
+        <h2 style="color: var(--danger); margin-bottom: 10px;">403 - Bạn không có quyền truy cập</h2>
+        <p style="color: var(--text-muted); max-width: 500px; margin: 0 auto 24px;">
+            Khu vực này yêu cầu đặc quyền Quản trị viên (<code>ROLE_ADMIN</code>). Tài khoản hiện tại của bạn không đủ quyền hạn để xem trang này.
+        </p>
+        <div>
+            <a th:href="@{/}" class="btn-primary" style="display: inline-block; width: auto; padding: 10px 24px; text-decoration: none;">
+                Về Trang chủ
+            </a>
+        </div>
+    </div>
+
+</main>
+</body>
+</html>

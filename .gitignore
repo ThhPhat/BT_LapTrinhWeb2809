@@ -1,0 +1,12 @@
+target/
+**/target/
+.env
+**/.env
+.idea/
+**/.idea/
+.vscode/
+**/.vscode/
+*.iml
+**/*.iml
+.DS_Store
+Thumbs.db

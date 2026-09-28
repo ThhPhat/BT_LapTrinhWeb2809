@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+<head>
+    <title>Bảng điều khiển Quản trị (Admin Dashboard)</title>
+</head>
+<body>
+<main layout:fragment="content">
+
+    <div class="card">
+        <h2 class="card-title">🛡️ Bảng điều khiển Quản trị Hệ thống (Admin Dashboard)</h2>
+        <p style="color: var(--text-muted); margin-bottom: 20px;">
+            Trang này chỉ hiển thị và cho phép truy cập đối với người dùng có vai trò <strong>ROLE_ADMIN</strong>.
+        </p>
+
+        <div class="profile-grid">
+            <div class="stat-box" style="border-top: 3px solid #7c3aed;">
+                <div class="label">Trạng thái bảo mật</div>
+                <div class="val" style="color: #7c3aed;">Spring Security 7 Active</div>
+            </div>
+            <div class="stat-box" style="border-top: 3px solid #2563eb;">
+                <div class="label">Quyền hạn truy cập</div>
+                <div class="val" style="color: #2563eb;">ROLE_ADMIN Only</div>
+            </div>
+            <div class="stat-box" style="border-top: 3px solid #10b981;">
+                <div class="label">Phiên làm việc (Session)</div>
+                <div class="val" style="color: #10b981;">Đang kết nối</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3 class="card-title">Quyền Quản Trị Viên</h3>
+        <p style="color: #475569; font-size: 14px; line-height: 1.6;">
+            Bạn đang đăng nhập với tư cách quản trị viên cao nhất. Bạn có toàn quyền truy xuất các tài nguyên nhạy cảm và điều phối phân quyền hệ thống.
+        </p>
+        <div style="margin-top: 16px;">
+            <a th:href="@{/}" class="btn-primary" style="display: inline-block; width: auto; padding: 10px 20px; text-decoration: none;">
+                Quay lại Trang chủ
+            </a>
+        </div>
+    </div>
+
+</main>
+</body>
+</html>

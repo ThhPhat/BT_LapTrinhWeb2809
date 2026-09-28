@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+<header th:fragment="header" class="topbar">
+    <a th:href="@{/}" class="brand">
+        🛍️ UTEShop
+    </a>
+
+    <nav class="topbar-nav">
+        <a th:href="@{/}">Trang chủ</a>
+        <a sec:authorize="hasRole('ADMIN')" th:href="@{/dashboard}">Dashboard Quản trị</a>
+    </nav>
+
+    <div sec:authorize="isAuthenticated()" class="user-account">
+        <!-- Avatar tròn -->
+        <img class="user-avatar"
+             th:src="${#authentication.principal.images != null and !#strings.isEmpty(#authentication.principal.images)
+                      ? #authentication.principal.images : '/images/avatar-default.svg'}"
+             alt="Avatar">
+
+        <!-- Thông tin cá nhân -->
+        <div class="user-info">
+            <span class="user-name" th:text="${#authentication.principal.fullName}">Họ và Tên</span>
+            <div class="user-meta">
+                <span th:text="'(' + ${#authentication.principal.username} + ')'">(username)</span>
+                <span>•</span>
+                <span th:text="${#authentication.principal.email}">email@domain.com</span>
+                <span class="role-badge"
+                      th:classappend="${#authentication.principal.role == 'ROLE_ADMIN' ? 'role-admin' : 'role-user'}"
+                      th:text="${#authentication.principal.role}">ROLE_USER</span>
+            </div>
+        </div>
+
+        <!-- Form Đăng xuất -->
+        <form th:action="@{/logout}" method="post" style="display:inline; margin-left: 8px;">
+            <button class="btn-logout" type="submit">Đăng xuất</button>
+        </form>
+    </div>
+
+    <div sec:authorize="!isAuthenticated()">
+        <a th:href="@{/login}" class="btn-logout" style="background:#2563eb; color:#fff; border:none;">Đăng nhập</a>
+    </div>
+</header>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+<head>
+    <title>Trang chủ</title>
+</head>
+<body>
+<main layout:fragment="content">
+
+    <div class="card profile-card">
+        <img class="profile-avatar-lg"
+             th:src="${#authentication.principal.images != null and !#strings.isEmpty(#authentication.principal.images)
+                      ? #authentication.principal.images : '/images/avatar-default.svg'}"
+             alt="User Avatar">
+
+        <div class="profile-details" style="flex: 1;">
+            <h2>Xin chào, <span th:text="${#authentication.principal.fullName}">User</span>! 👋</h2>
+            <p style="color: var(--text-muted); margin-bottom: 12px;">
+                Bạn đã đăng nhập thành công vào hệ thống với phiên bảo mật Spring Security 7.
+            </p>
+            <div>
+                <span class="role-badge"
+                      th:classappend="${#authentication.principal.role == 'ROLE_ADMIN' ? 'role-admin' : 'role-user'}"
+                      th:text="${#authentication.principal.role}">ROLE_USER</span>
+                <span style="margin-left: 8px; font-size: 13px; color: #10b981; font-weight: 600;">● Tài khoản đang hoạt động (Active)</span>
+            </div>
+        </div>
+
+        <div sec:authorize="hasRole('ADMIN')">
+            <a th:href="@{/dashboard}" class="btn-primary" style="padding: 10px 18px; text-decoration: none;">
+                Truy cập Dashboard ➔
+            </a>
+        </div>
+    </div>
+
+    <!-- Thông tin chi tiết -->
+    <div class="card">
+        <h3 class="card-title">Thông tin chi tiết tài khoản (Custom Principal)</h3>
+        <p style="color: var(--text-muted); margin-bottom: 16px;">
+            Dữ liệu dưới đây được lấy trực tiếp từ đối tượng <code>CustomUserDetails</code> lưu trong Security Context:
+        </p>
+
+        <div class="profile-grid">
+            <div class="stat-box">
+                <div class="label">Mã người dùng (User ID)</div>
+                <div class="val" th:text="${#authentication.principal.id}">1</div>
+            </div>
+            <div class="stat-box">
+                <div class="label">Tên đăng nhập (Username)</div>
+                <div class="val" th:text="${#authentication.principal.username}">username</div>
+            </div>
+            <div class="stat-box">
+                <div class="label">Địa chỉ Email</div>
+                <div class="val" th:text="${#authentication.principal.email}">email@gmail.com</div>
+            </div>
+            <div class="stat-box">
+                <div class="label">Họ và Tên</div>
+                <div class="val" th:text="${#authentication.principal.fullName}">Họ tên</div>
+            </div>
+            <div class="stat-box">
+                <div class="label">Đường dẫn ảnh đại diện</div>
+                <div class="val" style="word-break: break-all; font-size: 13px;" th:text="${#authentication.principal.images}">/images/user.svg</div>
+            </div>
+            <div class="stat-box">
+                <div class="label">Quyền hạn (Role)</div>
+                <div class="val" th:text="${#authentication.principal.role}">ROLE_USER</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Giới thiệu tính năng tích hợp -->
+    <div class="card" style="background: #f8fafc; border-left: 4px solid var(--primary);">
+        <h4 style="margin-bottom: 8px;">💡 Tính năng kết hợp từ Bài 1 & Bài 2:</h4>
+        <ul style="padding-left: 20px; line-height: 1.6; color: #475569; font-size: 14px;">
+            <li>Đăng nhập linh hoạt bằng cả <strong>Username</strong> hoặc <strong>Email</strong> qua <code>findByUsernameOrEmail</code>.</li>
+            <li>Thông tin <strong>Họ tên (fullName)</strong> và <strong>Ảnh đại diện (images)</strong> của user được hiển thị sắc nét trên thanh điều hướng Header.</li>
+            <li>Sử dụng cấu trúc layout kế thừa chuẩn hóa với <strong>Thymeleaf Layout Dialect</strong>.</li>
+            <li>Phân quyền chặt chẽ với Spring Security: Role ADMIN và Role USER.</li>
+        </ul>
+    </div>
+
+</main>
+</body>
+</html>
