@@ -10,9 +10,9 @@
     <relativePath/>
   </parent>
   <groupId>vn.iotstar</groupId>
-  <artifactId>springboot1-9</artifactId>
+  <artifactId>ex1-ex2-login</artifactId>
   <version>1.0</version>
-  <name>springboot1-9</name>
+  <name>ex1-ex2-login</name>
   <properties>
     <java.version>22</java.version>
     <mapstruct.version>1.6.3</mapstruct.version>

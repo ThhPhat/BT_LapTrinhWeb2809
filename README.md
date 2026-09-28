@@ -4,7 +4,7 @@ Hệ thống gồm 2 project hoàn chỉnh theo đúng yêu cầu từ 3 tài li
 
 | Thư mục | Đề tài / Chức năng | Phương thức đăng nhập | Cổng | Cơ sở dữ liệu |
 |---|---|---|---|---|
-| **ex2-custom-login-username-email** | **Bài 1:** Custom Login (Gộp Ví dụ 1 & Ví dụ 2)<br>• Đăng nhập bằng `username` hoặc `email`<br>• Hiển thị Avatar tròn, Họ tên, Role badge trên Header<br>• Phân quyền Admin (`/dashboard`) và User (`/`)<br>• Giao diện hiện đại với Thymeleaf Layout Dialect | Username hoặc Email | **8081** | `webst9` |
+| **ex1-ex2-login** | **Bài 1:** Custom Login (Gộp Ví dụ 1 & Ví dụ 2)<br>• Đăng nhập bằng `username` hoặc `email`<br>• Hiển thị Avatar tròn, Họ tên, Role badge trên Header<br>• Phân quyền Admin (`/dashboard`) và User (`/`)<br>• Giao diện hiện đại với Thymeleaf Layout Dialect | Username hoặc Email | **8081** | `webst9` |
 | **ex3-shop-otp-cloudinary** | **Bài 2:** Shop Quản lý Bán hàng (Đề tổng hợp Ví dụ 3)<br>• Đăng ký xác thực OTP qua Email<br>• Quên mật khẩu & Đổi mật khẩu bằng OTP<br>• CRUD & Tìm kiếm, Phân trang bảng User và Product<br>• Upload & Xóa ảnh sản phẩm trên Cloudinary<br>• Thống kê số lượng User và Product | Username hoặc Email | **8080** | `webst3` |
 
 ---
@@ -16,9 +16,9 @@ Hệ thống gồm 2 project hoàn chỉnh theo đúng yêu cầu từ 3 tài li
 - **Maven**: 3.9+
 - **SQL Server**: Chạy trên cổng mặc định `1433`, tài khoản `sa`. Đã tạo sẵn 2 database: `webst9` và `webst3`.
 
-### 1. Khởi chạy Bài 1: Custom Login (`ex2-custom-login-username-email`)
+### 1. Khởi chạy Bài 1: Custom Login (`ex1-ex2-login`)
 ```bash
-cd ex2-custom-login-username-email
+cd ex1-ex2-login
 mvn spring-boot:run
 ```
 - Truy cập trình duyệt: [http://localhost:8081](http://localhost:8081)
